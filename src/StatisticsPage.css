@@ -1,0 +1,633 @@
+.stat-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Navigation ── */
+
+.stat-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 48px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.stat-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.15s;
+}
+
+.stat-back-link:hover {
+  color: #1d4ed8;
+}
+
+.stat-back-link:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.stat-nav-links {
+  display: flex;
+  gap: 12px;
+}
+
+.stat-nav-link {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #3b82f6;
+  transition: background 0.15s;
+}
+
+.stat-nav-link:hover {
+  background: #2563eb;
+}
+
+.stat-nav-link:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.stat-nav-link-green {
+  background: #16a34a;
+}
+
+.stat-nav-link-green:hover {
+  background: #15803d;
+}
+
+/* ── Header ── */
+
+.stat-header {
+  padding: 48px 48px 40px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  color: #f1f5f9;
+}
+
+.stat-header-content {
+  max-width: 900px;
+}
+
+.stat-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.stat-subtitle {
+  margin: 10px 0 0;
+  font-size: 16px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.stat-subtitle strong {
+  color: #ffffff;
+}
+
+.stat-date {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* ── Ring charts section ── */
+
+.stat-rings-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 48px 48px 16px;
+  flex-wrap: wrap;
+}
+
+.stat-ring-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px 40px;
+  min-width: 220px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.stat-ring-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-ring-wrapper svg {
+  display: block;
+}
+
+.stat-ring-progress {
+  transition: stroke-dashoffset 1s ease;
+}
+
+.stat-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-ring-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.stat-ring-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-ring-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.stat-ring-detail {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ── Summary cards ── */
+
+.stat-summary-row {
+  display: flex;
+  gap: 16px;
+  padding: 16px 48px 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px 32px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-left: 4px solid transparent;
+}
+
+.stat-card-total {
+  border-left-color: #6366f1;
+}
+
+.stat-card-detected {
+  border-left-color: #3b82f6;
+}
+
+.stat-card-missed {
+  border-left-color: #f59e0b;
+}
+
+.stat-card-fixed {
+  border-left-color: #16a34a;
+}
+
+.stat-card-num {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.stat-card-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.stat-card-sub {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ── Sections ── */
+
+.stat-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px 40px;
+}
+
+.stat-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* ── Detection by level ── */
+
+.stat-level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.stat-level-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-level-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.stat-level-bar-track {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-level-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.stat-level-card-detail {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ── Detection by category ── */
+
+.stat-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.stat-cat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.stat-cat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stat-cat-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.stat-cat-ratio {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.stat-cat-bar-track {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-cat-bar-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+/* ── axe rules ── */
+
+.stat-rules-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-rule-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px 24px;
+}
+
+.stat-rule-name {
+  font-size: 14px;
+  font-weight: 700;
+  background: #eef2ff;
+  color: #4338ca;
+  padding: 4px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.stat-rule-maps {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ── Table ── */
+
+.stat-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.stat-table thead {
+  background: #f8fafc;
+}
+
+.stat-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #475569;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.stat-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.stat-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.stat-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.stat-row-detected {
+  background: #f0fdf4;
+}
+
+.stat-row-detected:hover {
+  background: #e8fbe9 !important;
+}
+
+.stat-td-title {
+  font-weight: 500;
+  max-width: 280px;
+}
+
+.stat-td-wcag {
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* ── Badges ── */
+
+.stat-level-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.stat-level-a {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.stat-level-aa {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.stat-level-aaa {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.stat-level-bp {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.stat-det-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.stat-det-yes {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.stat-det-no {
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+
+.stat-fix-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.stat-fix-yes {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.stat-fix-no {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.stat-rule-code {
+  font-size: 12px;
+  background: #eef2ff;
+  color: #4338ca;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.stat-na {
+  color: #cbd5e1;
+}
+
+/* ── Takeaway ── */
+
+.stat-takeaway {
+  margin-top: 8px;
+}
+
+.stat-takeaway-content {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 28px 32px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.stat-takeaway-content p {
+  margin: 0 0 12px;
+}
+
+.stat-takeaway-content p:last-child {
+  margin-bottom: 0;
+}
+
+.stat-takeaway-conclusion {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  font-weight: 600;
+  color: #92400e;
+}
+
+/* ── Footer ── */
+
+.stat-footer {
+  text-align: center;
+  padding: 24px 48px;
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.stat-footer a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.stat-footer a:hover {
+  text-decoration: underline;
+}
+
+.stat-footer a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .stat-nav,
+  .stat-header,
+  .stat-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .stat-nav {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .stat-rings-section {
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 20px;
+  }
+
+  .stat-ring-card {
+    min-width: 0;
+    width: 100%;
+    padding: 24px;
+  }
+
+  .stat-summary-row {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+  }
+
+  .stat-card {
+    min-width: 0;
+  }
+
+  .stat-table {
+    font-size: 12px;
+  }
+
+  .stat-table th,
+  .stat-table td {
+    padding: 8px 10px;
+  }
+}

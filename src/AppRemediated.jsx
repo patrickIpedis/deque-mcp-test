@@ -10,7 +10,10 @@ const AppRemediated = () => (
         </svg>
         Back to original site
       </Link>
-      <span className="rx-topbar-badge">Remediated version</span>
+      <div className="rx-topbar-right">
+        <Link to="/statistics" className="rx-stats-link">Coverage Statistics</Link>
+        <span className="rx-topbar-badge">Remediated version</span>
+      </div>
     </nav>
 
     <div className="rx-hero">

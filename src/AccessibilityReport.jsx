@@ -610,6 +610,9 @@ const AccessibilityReport = () => {
           </svg>
           Back to ShipXpress
         </Link>
+        <Link to="/statistics" className="report-stats-link">
+          Coverage Statistics
+        </Link>
       </nav>
 
       <header className="report-header">

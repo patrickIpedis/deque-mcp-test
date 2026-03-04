@@ -48,6 +48,32 @@
   border-radius: 4px;
 }
 
+.report-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.report-stats-link {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #6366f1;
+  transition: background 0.15s;
+}
+
+.report-stats-link:hover {
+  background: #4f46e5;
+}
+
+.report-stats-link:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
 /* ── Header ── */
 
 .report-header {
