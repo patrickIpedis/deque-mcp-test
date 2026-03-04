@@ -3,12 +3,87 @@ import './AccessibilityReport.css';
 
 const violations = [
   {
+    id: 'html-has-lang',
+    rule: 'html-has-lang',
+    impact: 'serious',
+    wcag: 'WCAG 2.1 Level A — 3.1.1 Language of Page',
+    description:
+      'Ensures every HTML document has a lang attribute so assistive technologies can determine the correct pronunciation and language rules.',
+    helpUrl:
+      'https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=AxeChrome',
+    instances: [
+      {
+        element: '<html>',
+        selector: 'html',
+        summary:
+          'The <html> element does not have a lang attribute.',
+      },
+    ],
+  },
+  {
+    id: 'image-alt',
+    rule: 'image-alt',
+    impact: 'critical',
+    wcag: 'WCAG 2.1 Level A — 1.1.1 Non-text Content',
+    description:
+      'Ensures <img> elements have alternative text or a role of none or presentation.',
+    helpUrl:
+      'https://dequeuniversity.com/rules/axe/4.11/image-alt?application=AxeChrome',
+    instances: [
+      {
+        element: '<img src="/map-icon.png" width="42" height="42">',
+        selector: 'img[src$="map-icon.png"]',
+        summary:
+          'Element does not have an alt attribute.',
+      },
+      {
+        element: '<img src="/tracking-icon.png" width="42" height="42">',
+        selector: 'img[src$="tracking-icon.png"]',
+        summary:
+          'Element does not have an alt attribute.',
+      },
+      {
+        element: '<img src="/options-icon.png" width="42" height="42">',
+        selector: 'img[src$="options-icon.png"]',
+        summary:
+          'Element does not have an alt attribute.',
+      },
+      {
+        element: '<img src="/submit-icon.png">',
+        selector: 'img[src$="submit-icon.png"]',
+        summary:
+          'Element does not have an alt attribute.',
+      },
+    ],
+  },
+  {
+    id: 'button-name',
+    rule: 'button-name',
+    impact: 'critical',
+    wcag: 'WCAG 2.1 Level A — 4.1.2 Name, Role, Value',
+    description:
+      'Ensures buttons have discernible text that can be read by assistive technologies.',
+    helpUrl:
+      'https://dequeuniversity.com/rules/axe/4.11/button-name?application=AxeChrome',
+    instances: [
+      {
+        element:
+          '<button class="image-button"><img src="/submit-icon.png"></button>',
+        selector: 'button',
+        summary:
+          'Element does not have inner text that is visible to screen readers. No aria-label, aria-labelledby, or title attribute provided.',
+      },
+    ],
+  },
+  {
     id: 'aria-hidden-focus',
     rule: 'aria-hidden-focus',
     impact: 'serious',
     wcag: 'WCAG 2.1 Level A — 4.1.2 Name, Role, Value',
     description:
       'Ensures aria-hidden elements are not focusable nor contain focusable elements.',
+    helpUrl:
+      'https://dequeuniversity.com/rules/axe/4.11/aria-hidden-focus?application=AxeChrome',
     instances: [
       {
         element:
@@ -26,7 +101,29 @@ const violations = [
     wcag: 'WCAG 2.1 Level AA — 1.4.3 Contrast (Minimum)',
     description:
       'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds.',
+    helpUrl:
+      'https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=AxeChrome',
     instances: [
+      {
+        element: '<a class="report-link remediated-link" href="/remediated">',
+        selector: '.remediated-link',
+        fg: '#ffffff',
+        bg: '#16a34a',
+        ratio: '3.29:1',
+        required: '4.5:1',
+        fontSize: '13px',
+        fontWeight: 'normal',
+      },
+      {
+        element: '<a class="report-link" href="/accessibility-report">',
+        selector: 'a[href$="accessibility-report"]',
+        fg: '#ffffff',
+        bg: '#3b82f6',
+        ratio: '3.67:1',
+        required: '4.5:1',
+        fontSize: '13px',
+        fontWeight: 'normal',
+      },
       {
         element: '<div class="primary-cta">Get Started</div>',
         selector: '.primary-cta',
@@ -52,6 +149,17 @@ const violations = [
         element:
           '<p>We connect warehouses, ports, and trucks in a kind of organized way…</p>',
         selector: '.feature-card:nth-child(1) > p:nth-child(3)',
+        fg: '#999999',
+        bg: '#fafafa',
+        ratio: '2.72:1',
+        required: '4.5:1',
+        fontSize: '12px',
+        fontWeight: 'normal',
+      },
+      {
+        element:
+          '<p>Network status:<span class="status-label fast">Fast</span></p>',
+        selector: '.feature-card:nth-child(1) > p:nth-child(4)',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
@@ -93,6 +201,17 @@ const violations = [
       },
       {
         element:
+          '<p>Alert level:<span class="status-label slow">Slow</span></p>',
+        selector: '.feature-card:nth-child(2) > p:nth-child(4)',
+        fg: '#999999',
+        bg: '#fafafa',
+        ratio: '2.72:1',
+        required: '4.5:1',
+        fontSize: '12px',
+        fontWeight: 'normal',
+      },
+      {
+        element:
           '<div style="font-weight: bold; font-size: 16px;">Flexible Options</div>',
         selector: '.feature-card:nth-child(3) > div',
         fg: '#999999',
@@ -124,7 +243,7 @@ const violations = [
         fontWeight: 'normal',
       },
       {
-        element: '<div class="tab">E‑commerce</div>',
+        element: '<div class="tab">E\u2011commerce</div>',
         selector: '.tab:nth-child(2)',
         fg: '#999999',
         bg: '#f0f0f0',
@@ -156,11 +275,11 @@ const violations = [
       },
       {
         element:
-          '<div class="promo-title" id="promo-details">Limited time offer – track even more shipments!</div>',
-        selector: '#promo-details',
-        fg: '#bbbbbb',
+          '<div class="promo-title" id="details">Limited time offer – track even more shipments!</div>',
+        selector: '.promo-title',
+        fg: '#f0f0f0',
         bg: '#ffffff',
-        ratio: '1.91:1',
+        ratio: '1.13:1',
         required: '4.5:1',
         fontSize: '14px',
         fontWeight: 'bold',
@@ -327,7 +446,7 @@ function ContrastSwatch({ color }) {
   );
 }
 
-function AriaHiddenCard({ violation }) {
+function GenericCard({ violation }) {
   return (
     <section className="report-violation-card" aria-labelledby={`rule-${violation.id}`}>
       <div className="report-violation-header">
@@ -341,6 +460,15 @@ function AriaHiddenCard({ violation }) {
       </div>
 
       <p className="report-violation-desc">{violation.description}</p>
+
+      <a
+        href={violation.helpUrl}
+        className="report-help-link"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Learn more on Deque University
+      </a>
 
       <div className="report-instances-count">
         {violation.instances.length} instance{violation.instances.length > 1 ? 's' : ''} found
@@ -382,6 +510,15 @@ function ContrastCard({ violation }) {
       </div>
 
       <p className="report-violation-desc">{violation.description}</p>
+
+      <a
+        href={violation.helpUrl}
+        className="report-help-link"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Learn more on Deque University
+      </a>
 
       <div className="report-instances-count">
         {violation.instances.length} instance{violation.instances.length > 1 ? 's' : ''} found
@@ -438,6 +575,14 @@ const AccessibilityReport = () => {
     (sum, v) => sum + v.instances.length,
     0
   );
+
+  const highestImpact = violations.some((v) => v.impact === 'critical')
+    ? 'Critical'
+    : 'Serious';
+
+  const criticalCount = violations.filter((v) => v.impact === 'critical').length;
+  const seriousCount = violations.filter((v) => v.impact === 'serious').length;
+
   const scanDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -475,6 +620,7 @@ const AccessibilityReport = () => {
             <code className="report-url">http://localhost:5173/</code>
           </p>
           <p className="report-date">Scanned on {scanDate}</p>
+          <p className="report-engine">Engine: axe-core 4.11 via axe MCP Server</p>
         </div>
 
         <div className="report-summary-cards">
@@ -486,21 +632,30 @@ const AccessibilityReport = () => {
             <span className="report-summary-number">{totalInstances}</span>
             <span className="report-summary-label">Total instances</span>
           </div>
+          <div className="report-summary-card report-summary-critical">
+            <span className="report-summary-number">{criticalCount}</span>
+            <span className="report-summary-label">Critical rules</span>
+          </div>
+          <div className="report-summary-card report-summary-serious">
+            <span className="report-summary-number">{seriousCount}</span>
+            <span className="report-summary-label">Serious rules</span>
+          </div>
           <div className="report-summary-card report-summary-impact">
-            <span className="report-summary-number">Serious</span>
+            <span className="report-summary-number">{highestImpact}</span>
             <span className="report-summary-label">Highest impact</span>
           </div>
         </div>
       </header>
 
-      <main className="report-main">
+      <div className="report-main">
         <div className="report-toc">
-          <h2 className="report-toc-title">Violations</h2>
+          <h2 className="report-toc-title">Violations Overview</h2>
           <ol className="report-toc-list">
             {violations.map((v) => (
               <li key={v.id}>
                 <a href={`#rule-${v.id}`} className="report-toc-link">
                   <code>{v.rule}</code>
+                  <ImpactBadge impact={v.impact} />
                   <span className="report-toc-count">
                     {v.instances.length} instance{v.instances.length > 1 ? 's' : ''}
                   </span>
@@ -514,12 +669,12 @@ const AccessibilityReport = () => {
           v.id === 'color-contrast' ? (
             <ContrastCard key={v.id} violation={v} />
           ) : (
-            <AriaHiddenCard key={v.id} violation={v} />
+            <GenericCard key={v.id} violation={v} />
           )
         )}
-      </main>
+      </div>
 
-      <footer className="report-footer">
+      <div className="report-footer">
         <p>
           Generated with{' '}
           <a
@@ -529,9 +684,9 @@ const AccessibilityReport = () => {
           >
             axe-core
           </a>{' '}
-          via the axe MCP Server
+          via the axe MCP Server &middot; {scanDate}
         </p>
-      </footer>
+      </div>
     </div>
   );
 };

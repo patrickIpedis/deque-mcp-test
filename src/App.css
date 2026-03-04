@@ -201,3 +201,15 @@ footer {
   outline: 2px solid #93c5fd;
   outline-offset: 2px;
 }
+
+.remediated-link {
+  background: #16a34a;
+}
+
+.remediated-link:hover {
+  background: #15803d;
+}
+
+.site-topbar {
+  gap: 12px;
+}

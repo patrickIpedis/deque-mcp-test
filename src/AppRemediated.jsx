@@ -1,48 +1,43 @@
 import { Link } from 'react-router-dom';
+import './AppRemediated.css';
 
-const App = () => (
+const AppRemediated = () => (
   <>
-    <nav className="site-topbar">
-      <Link to="/remediated" className="report-link remediated-link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <nav className="rx-topbar" aria-label="Site navigation">
+      <Link to="/" className="rx-back-link">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        Remediated Version
+        Back to original site
       </Link>
-      <Link to="/accessibility-report" className="report-link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        Accessibility Report
-      </Link>
+      <span className="rx-topbar-badge">Remediated version</span>
     </nav>
 
-    <div className="hero">
-      <div className="hero-overlay-text">
-        {/* No h1, just a styled div */}
-        <div className="hero-title">ShipXpress</div>
-        <div className="hero-subtitle">
+    <div className="rx-hero">
+      <div className="rx-hero-overlay-text">
+        <div className="rx-hero-title">ShipXpress</div>
+        <div className="rx-hero-subtitle">
           Move your products across the globe, kind of quickly. Maybe.
         </div>
 
         <div
-          className="primary-cta"
+          className="rx-primary-cta"
           onClick={() => alert('This would start a quote flow.')}
         >
           Get Started
         </div>
 
-        <p className="hero-note">
+        <p className="rx-hero-note">
           For more details, <a href="#details">click here</a>.
         </p>
       </div>
     </div>
 
-    <div id="details" className="features">
-      <div className="feature-card">
+    <div id="details" className="rx-features">
+      <div className="rx-feature-card">
         <div style={{ fontWeight: 'bold', fontSize: '16px' }}>Global Coverage</div>
 
-        <img src="/map-icon.png" width="42" height="42" />
+        <img src="/map-icon.png" width="42" height="42" alt="" />
         <p>
           We connect warehouses, ports, and trucks in a kind of
           organized way so your packages mostly reach where they should.
@@ -50,25 +45,25 @@ const App = () => (
 
         <p>
           Network status:
-          <span className="status-label fast">Fast</span>
+          <span className="rx-status-label rx-fast">Fast</span>
         </p>
       </div>
 
-      <div className="feature-card">
+      <div className="rx-feature-card">
         <div style={{ fontWeight: 'bold', fontSize: '16px' }}>Real-Time Tracking</div>
-        <img src="/tracking-icon.png" width="42" height="42" />
+        <img src="/tracking-icon.png" width="42" height="42" alt="" />
         <p>
           Watch your shipment dots move on a map with slightly delayed updates.
         </p>
         <p>
           Alert level:
-          <span className="status-label slow">Slow</span>
+          <span className="rx-status-label rx-slow">Slow</span>
         </p>
       </div>
 
-      <div className="feature-card">
+      <div className="rx-feature-card">
         <div style={{ fontWeight: 'bold', fontSize: '16px' }}>Flexible Options</div>
-        <img src="/options-icon.png" width="42" height="42" />
+        <img src="/options-icon.png" width="42" height="42" alt="" />
         <p>
           Choose routes, carriers, and timeslots using an interface that may
           require a bit of guessing.
@@ -78,11 +73,11 @@ const App = () => (
       </div>
     </div>
 
-    <div className="testimonial">
-      <div className="tabs">
-        <div className="tab">Logistics</div>
-        <div className="tab">E‑commerce</div>
-        <div className="tab">Enterprise</div>
+    <div className="rx-testimonial">
+      <div className="rx-tabs">
+        <div className="rx-tab">Logistics</div>
+        <div className="rx-tab">E‑commerce</div>
+        <div className="rx-tab">Enterprise</div>
       </div>
 
       <p>
@@ -91,14 +86,14 @@ const App = () => (
       </p>
     </div>
 
-    <div className="promo">
-      <div className="promo-title" id="details">
+    <div className="rx-promo">
+      <div className="rx-promo-title" id="promo-details">
         Limited time offer – track even more shipments!
       </div>
 
       <audio src="/promo-message.mp3" autoPlay />
 
-      <table className="promo-table">
+      <table className="rx-promo-table">
         <tbody>
           <tr>
             <td>Plan</td>
@@ -122,10 +117,11 @@ const App = () => (
         <input type="text" name="company" placeholder="Company name" /><br />
         <input type="email" name="email" placeholder="Email" /><br />
 
-        <input type="text" name="country" placeholder="Country" aria-hidden="true" /><br />
+        {/* Remediated: added disabled so aria-hidden input is not focusable */}
+        <input type="text" name="country" placeholder="Country" aria-hidden="true" disabled /><br />
 
-        <button className="image-button">
-          <img src="/submit-icon.png" />
+        <button className="rx-image-button">
+          <img src="/submit-icon.png" alt="Submit" />
         </button>
       </form>
 
@@ -133,10 +129,10 @@ const App = () => (
         To see the full list, <a href="https://example.com/pricing" target="_blank" rel="noreferrer">more</a>.
       </p>
 
-      <div className="icon-link"></div>
+      <div className="rx-icon-link"></div>
     </div>
 
-    <footer>
+    <footer className="rx-footer">
       <div>ShipXpress, Inc.</div>
       <div>support@shipxpress.example</div>
       <div>All routes &amp; delivery times are approximate.</div>
@@ -144,4 +140,4 @@ const App = () => (
   </>
 );
 
-export default App;
+export default AppRemediated;
