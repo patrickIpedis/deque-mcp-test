@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #999999; /* Low contrast vs white */
+  font-size: 12px; /* Very small base text */
+  line-height: 1; /* Tight line height */
+}
+
+:focus {
+  outline: none;
+}
+
+.hero {
+  height: 80vh;
+  background-image: url("/hero-shipping.jpg"); /* No alt text for this image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15%;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #bbbbbb; /* Poor contrast on white */
+  text-shadow: 0 0 1px #ffffff;
+}
+
+.hero-subtitle {
+  margin-top: 5px;
+  font-size: 18px;
+  color: #cccccc;
+}
+
+.primary-cta {
+  margin-top: 20px;
+  display: inline-block;
+  background: #eeeeee;
+  color: #aaaaaa; /* Low contrast */
+  padding: 6px 10px; /* Small click target */
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.hero-note {
+  margin-top: 10px;
+}
+
+.hero-note a {
+  color: #bbbbbb;
+  text-decoration: none;
+  border-bottom: 1px dotted #cccccc; /* Thin, low contrast */
+}
+
+.features {
+  padding: 40px 15%;
+  display: flex;
+  gap: 20px;
+}
+
+.feature-card {
+  border: 1px solid #f0f0f0;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.status-label {
+  font-weight: bold;
+}
+
+.status-label.fast {
+  color: #00aa00;
+}
+
+.status-label.slow {
+  color: #aa0000;
+}
+
+.testimonial {
+  padding: 30px 15%;
+  background: #fdfdfd;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab {
+  padding: 4px 8px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+footer {
+  padding: 15px 15%;
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+  text-align: center;
+}
+
+.hero-overlay-text {
+  max-width: 380px;
+}
+
+/* Flashing promo text */
+.promo {
+  padding: 20px 15%;
+  background: #ffffff;
+  font-size: 13px;
+}
+
+.promo-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #bbbbbb; /* Low contrast */
+  animation: flash 0.3s linear infinite; /* Rapid flashing */
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Layout table used for non-tabular content */
+.promo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.promo-table td {
+  border: 1px solid #f0f0f0;
+  padding: 4px;
+  font-size: 11px;
+}
+
+/* Tiny icon-only clickable target */
+.icon-link {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #dddddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Image button with no focus style */
+.image-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
