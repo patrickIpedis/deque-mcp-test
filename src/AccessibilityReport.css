@@ -291,6 +291,48 @@
   font-size: 14px;
 }
 
+/* ── Tags / Standards ── */
+
+.report-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 12px;
+}
+
+.report-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-family: 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+}
+
+/* ── Fix summary ── */
+
+.report-fix-summary {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.report-fix-summary .report-label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.report-fix-text {
+  font-size: 13px;
+  color: #334155;
+  white-space: pre-wrap;
+  font-family: 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+  line-height: 1.6;
+}
+
 .report-help-link {
   display: inline-block;
   margin-bottom: 16px;

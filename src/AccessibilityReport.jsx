@@ -3,56 +3,20 @@ import './AccessibilityReport.css';
 
 const violations = [
   {
-    id: 'html-has-lang',
-    rule: 'html-has-lang',
+    id: 'aria-hidden-focus',
+    rule: 'aria-hidden-focus',
     impact: 'serious',
-    wcag: 'WCAG 2.1 Level A — 3.1.1 Language of Page',
-    description:
-      'Ensures every HTML document has a lang attribute so assistive technologies can determine the correct pronunciation and language rules.',
+    description: 'Ensure aria-hidden elements are not focusable nor contain focusable elements',
+    helpText: 'ARIA hidden element must not be focusable or contain focusable elements',
     helpUrl:
-      'https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=AxeChrome',
+      'https://dequeuniversity.com/rules/axe/4.11/aria-hidden-focus?application=AxeChrome',
+    tags: ['cat.name-role-value', 'wcag2a', 'wcag412', 'TTv5', 'TT6.a', 'EN-301-549', 'EN-9.4.1.2', 'RGAAv4', 'RGAA-7.1.1'],
     instances: [
       {
-        element: '<html>',
-        selector: 'html',
+        element: '<input type="text" name="country" placeholder="Country" aria-hidden="true">',
+        selector: 'input[name="country"]',
         summary:
-          'The <html> element does not have a lang attribute.',
-      },
-    ],
-  },
-  {
-    id: 'image-alt',
-    rule: 'image-alt',
-    impact: 'critical',
-    wcag: 'WCAG 2.1 Level A — 1.1.1 Non-text Content',
-    description:
-      'Ensures <img> elements have alternative text or a role of none or presentation.',
-    helpUrl:
-      'https://dequeuniversity.com/rules/axe/4.11/image-alt?application=AxeChrome',
-    instances: [
-      {
-        element: '<img src="/map-icon.png" width="42" height="42">',
-        selector: 'img[src$="map-icon.png"]',
-        summary:
-          'Element does not have an alt attribute.',
-      },
-      {
-        element: '<img src="/tracking-icon.png" width="42" height="42">',
-        selector: 'img[src$="tracking-icon.png"]',
-        summary:
-          'Element does not have an alt attribute.',
-      },
-      {
-        element: '<img src="/options-icon.png" width="42" height="42">',
-        selector: 'img[src$="options-icon.png"]',
-        summary:
-          'Element does not have an alt attribute.',
-      },
-      {
-        element: '<img src="/submit-icon.png">',
-        selector: 'img[src$="submit-icon.png"]',
-        summary:
-          'Element does not have an alt attribute.',
+          'Fix all of the following:\n  Focusable content should be disabled or be removed from the DOM',
       },
     ],
   },
@@ -60,37 +24,18 @@ const violations = [
     id: 'button-name',
     rule: 'button-name',
     impact: 'critical',
-    wcag: 'WCAG 2.1 Level A — 4.1.2 Name, Role, Value',
-    description:
-      'Ensures buttons have discernible text that can be read by assistive technologies.',
+    description: 'Ensure buttons have discernible text',
+    helpText: 'Buttons must have discernible text',
     helpUrl:
       'https://dequeuniversity.com/rules/axe/4.11/button-name?application=AxeChrome',
+    tags: ['cat.name-role-value', 'wcag2a', 'wcag412', 'section508', 'section508.22.a', 'TTv5', 'TT6.a', 'EN-301-549', 'EN-9.4.1.2', 'ACT', 'RGAAv4', 'RGAA-11.9.1'],
     instances: [
       {
         element:
           '<button class="image-button"><img src="/submit-icon.png"></button>',
         selector: 'button',
         summary:
-          'Element does not have inner text that is visible to screen readers. No aria-label, aria-labelledby, or title attribute provided.',
-      },
-    ],
-  },
-  {
-    id: 'aria-hidden-focus',
-    rule: 'aria-hidden-focus',
-    impact: 'serious',
-    wcag: 'WCAG 2.1 Level A — 4.1.2 Name, Role, Value',
-    description:
-      'Ensures aria-hidden elements are not focusable nor contain focusable elements.',
-    helpUrl:
-      'https://dequeuniversity.com/rules/axe/4.11/aria-hidden-focus?application=AxeChrome',
-    instances: [
-      {
-        element:
-          '<input type="text" name="country" placeholder="Country" aria-hidden="true">',
-        selector: 'input[name="country"]',
-        summary:
-          'Focusable content should be disabled or be removed from the DOM.',
+          'Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element\'s default semantics were not overridden with role="none" or role="presentation"',
       },
     ],
   },
@@ -98,30 +43,31 @@ const violations = [
     id: 'color-contrast',
     rule: 'color-contrast',
     impact: 'serious',
-    wcag: 'WCAG 2.1 Level AA — 1.4.3 Contrast (Minimum)',
     description:
-      'Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds.',
+      'Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds',
+    helpText: 'Elements must meet minimum color contrast ratio thresholds',
     helpUrl:
       'https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=AxeChrome',
+    tags: ['cat.color', 'wcag2aa', 'wcag143', 'TTv5', 'TT13.c', 'EN-301-549', 'EN-9.1.4.3', 'ACT', 'RGAAv4', 'RGAA-3.2.1'],
     instances: [
       {
-        element: '<a class="report-link remediated-link" href="/remediated">',
+        element: '<a class="report-link remediated-link" href="/remediated" data-discover="true">',
         selector: '.remediated-link',
         fg: '#ffffff',
         bg: '#16a34a',
         ratio: '3.29:1',
         required: '4.5:1',
-        fontSize: '13px',
+        fontSize: '9.8pt (13px)',
         fontWeight: 'normal',
       },
       {
-        element: '<a class="report-link" href="/accessibility-report">',
+        element: '<a class="report-link" href="/accessibility-report" data-discover="true">',
         selector: 'a[href$="accessibility-report"]',
         fg: '#ffffff',
         bg: '#3b82f6',
         ratio: '3.67:1',
         required: '4.5:1',
-        fontSize: '13px',
+        fontSize: '9.8pt (13px)',
         fontWeight: 'normal',
       },
       {
@@ -131,40 +77,37 @@ const violations = [
         bg: '#eeeeee',
         ratio: '2.00:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<div style="font-weight: bold; font-size: 16px;">Global Coverage</div>',
+        element: '<div style="font-weight: bold; font-size: 16px;">Global Coverage</div>',
         selector: '.feature-card:nth-child(1) > div',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '16px',
+        fontSize: '12.0pt (16px)',
         fontWeight: 'bold',
       },
       {
-        element:
-          '<p>We connect warehouses, ports, and trucks in a kind of organized way…</p>',
+        element: '<p>We connect warehouses, ports, and trucks in a kind of organized way so your packages mostly reach where they should.</p>',
         selector: '.feature-card:nth-child(1) > p:nth-child(3)',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<p>Network status:<span class="status-label fast">Fast</span></p>',
+        element: '<p>Network status:<span class="status-label fast">Fast</span></p>',
         selector: '.feature-card:nth-child(1) > p:nth-child(4)',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
@@ -174,62 +117,57 @@ const violations = [
         bg: '#fafafa',
         ratio: '2.98:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'bold',
       },
       {
-        element:
-          '<div style="font-weight: bold; font-size: 16px;">Real-Time Tracking</div>',
+        element: '<div style="font-weight: bold; font-size: 16px;">Real-Time Tracking</div>',
         selector: '.feature-card:nth-child(2) > div',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '16px',
+        fontSize: '12.0pt (16px)',
         fontWeight: 'bold',
       },
       {
-        element:
-          '<p>Watch your shipment dots move on a map with slightly delayed updates.</p>',
+        element: '<p>Watch your shipment dots move on a map with slightly delayed updates.</p>',
         selector: '.feature-card:nth-child(2) > p:nth-child(3)',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<p>Alert level:<span class="status-label slow">Slow</span></p>',
+        element: '<p>Alert level:<span class="status-label slow">Slow</span></p>',
         selector: '.feature-card:nth-child(2) > p:nth-child(4)',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<div style="font-weight: bold; font-size: 16px;">Flexible Options</div>',
+        element: '<div style="font-weight: bold; font-size: 16px;">Flexible Options</div>',
         selector: '.feature-card:nth-child(3) > div',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '16px',
+        fontSize: '12.0pt (16px)',
         fontWeight: 'bold',
       },
       {
-        element:
-          '<p>Choose routes, carriers, and timeslots using an interface that may require a bit of guessing.</p>',
+        element: '<p>Choose routes, carriers, and timeslots using an interface that may require a bit of guessing.</p>',
         selector: '.feature-card:nth-child(3) > p',
         fg: '#999999',
         bg: '#fafafa',
         ratio: '2.72:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
@@ -239,7 +177,7 @@ const violations = [
         bg: '#f0f0f0',
         ratio: '2.50:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -249,7 +187,7 @@ const violations = [
         bg: '#f0f0f0',
         ratio: '2.50:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -259,29 +197,27 @@ const violations = [
         bg: '#f0f0f0',
         ratio: '2.50:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<p>"ShipXpress helps us send boxes everywhere."<br>– A user</p>',
+        element: '<p>"ShipXpress helps us send boxes everywhere."<br>\u2013 A user</p>',
         selector: '.testimonial > p',
         fg: '#999999',
         bg: '#fdfdfd',
         ratio: '2.80:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<div class="promo-title" id="details">Limited time offer – track even more shipments!</div>',
+        element: '<div class="promo-title" id="details">Limited time offer \u2013 track even more shipments!</div>',
         selector: '.promo-title',
-        fg: '#f0f0f0',
+        fg: '#e8e8e8',
         bg: '#ffffff',
-        ratio: '1.13:1',
+        ratio: '1.22:1',
         required: '4.5:1',
-        fontSize: '14px',
+        fontSize: '10.5pt (14px)',
         fontWeight: 'bold',
       },
       {
@@ -291,7 +227,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -301,7 +237,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -311,7 +247,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -321,7 +257,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -331,7 +267,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -341,7 +277,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -351,7 +287,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -361,7 +297,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
@@ -371,18 +307,17 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '11px',
+        fontSize: '8.3pt (11px)',
         fontWeight: 'normal',
       },
       {
-        element:
-          '<p>To see the full list, <a href="https://example.com/pricing" target="_blank" rel="noreferrer">more</a>.</p>',
+        element: '<p>To see the full list, <a href="https://example.com/pricing" target="_blank" rel="noreferrer">more</a>.</p>',
         selector: '.promo > p',
         fg: '#999999',
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '13px',
+        fontSize: '9.8pt (13px)',
         fontWeight: 'normal',
       },
       {
@@ -392,7 +327,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
@@ -402,7 +337,7 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
       },
       {
@@ -412,8 +347,45 @@ const violations = [
         bg: '#ffffff',
         ratio: '2.84:1',
         required: '4.5:1',
-        fontSize: '12px',
+        fontSize: '9.0pt (12px)',
         fontWeight: 'normal',
+      },
+    ],
+  },
+  {
+    id: 'image-alt',
+    rule: 'image-alt',
+    impact: 'critical',
+    description:
+      'Ensure <img> elements have alternative text or a role of none or presentation',
+    helpText: 'Images must have alternative text',
+    helpUrl:
+      'https://dequeuniversity.com/rules/axe/4.11/image-alt?application=AxeChrome',
+    tags: ['cat.text-alternatives', 'wcag2a', 'wcag111', 'section508', 'section508.22.a', 'TTv5', 'TT7.a', 'TT7.b', 'EN-301-549', 'EN-9.1.1.1', 'ACT', 'RGAAv4', 'RGAA-1.1.1'],
+    instances: [
+      {
+        element: '<img src="/map-icon.png" width="42" height="42">',
+        selector: 'img[src$="map-icon.png"]',
+        summary:
+          'Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element\'s default semantics were not overridden with role="none" or role="presentation"',
+      },
+      {
+        element: '<img src="/tracking-icon.png" width="42" height="42">',
+        selector: 'img[src$="tracking-icon.png"]',
+        summary:
+          'Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element\'s default semantics were not overridden with role="none" or role="presentation"',
+      },
+      {
+        element: '<img src="/options-icon.png" width="42" height="42">',
+        selector: 'img[src$="options-icon.png"]',
+        summary:
+          'Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element\'s default semantics were not overridden with role="none" or role="presentation"',
+      },
+      {
+        element: '<img src="/submit-icon.png">',
+        selector: 'img[src$="submit-icon.png"]',
+        summary:
+          'Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element\'s default semantics were not overridden with role="none" or role="presentation"',
       },
     ],
   },
@@ -425,6 +397,38 @@ const impactColors = {
   serious: { bg: '#fee2e2', text: '#991b1b', label: 'Serious' },
   critical: { bg: '#fecaca', text: '#7f1d1d', label: 'Critical' },
 };
+
+function formatWcagFromTags(tags) {
+  const levelTag = tags.find((t) =>
+    ['wcag2a', 'wcag2aa', 'wcag2aaa'].includes(t)
+  );
+  const criterionTag = tags.find(
+    (t) => /^wcag\d{3,}$/.test(t) && !['wcag2a', 'wcag2aa', 'wcag2aaa'].includes(t)
+  );
+
+  const levelMap = {
+    wcag2a: 'WCAG 2 Level A',
+    wcag2aa: 'WCAG 2 Level AA',
+    wcag2aaa: 'WCAG 2 Level AAA',
+  };
+
+  let result = levelTag ? levelMap[levelTag] : '';
+  if (criterionTag) {
+    const digits = criterionTag.replace('wcag', '');
+    const sc = digits.split('').join('.');
+    result += ` \u2014 SC ${sc}`;
+  }
+  return result;
+}
+
+function getStandardTags(tags) {
+  return tags.filter(
+    (t) =>
+      !t.startsWith('cat.') &&
+      !t.startsWith('wcag') &&
+      !t.startsWith('TT')
+  );
+}
 
 function ImpactBadge({ impact }) {
   const style = impactColors[impact] || impactColors.moderate;
@@ -446,7 +450,24 @@ function ContrastSwatch({ color }) {
   );
 }
 
+function TagsList({ tags }) {
+  const standards = getStandardTags(tags);
+  if (standards.length === 0) return null;
+  return (
+    <div className="report-tags">
+      {standards.map((tag) => (
+        <span key={tag} className="report-tag">
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function GenericCard({ violation }) {
+  const wcagRef = formatWcagFromTags(violation.tags);
+  const ruleSummary = violation.instances[0]?.summary;
+
   return (
     <section className="report-violation-card" aria-labelledby={`rule-${violation.id}`}>
       <div className="report-violation-header">
@@ -454,12 +475,14 @@ function GenericCard({ violation }) {
           <h2 id={`rule-${violation.id}`} className="report-rule-name">
             {violation.rule}
           </h2>
-          <p className="report-wcag-ref">{violation.wcag}</p>
+          {wcagRef && <p className="report-wcag-ref">{wcagRef}</p>}
         </div>
         <ImpactBadge impact={violation.impact} />
       </div>
 
-      <p className="report-violation-desc">{violation.description}</p>
+      <p className="report-violation-desc">{violation.helpText}</p>
+
+      <TagsList tags={violation.tags} />
 
       <a
         href={violation.helpUrl}
@@ -469,6 +492,13 @@ function GenericCard({ violation }) {
       >
         Learn more on Deque University
       </a>
+
+      {ruleSummary && (
+        <div className="report-fix-summary">
+          <span className="report-label">How to fix</span>
+          <div className="report-fix-text">{ruleSummary}</div>
+        </div>
+      )}
 
       <div className="report-instances-count">
         {violation.instances.length} instance{violation.instances.length > 1 ? 's' : ''} found
@@ -480,10 +510,6 @@ function GenericCard({ violation }) {
             <div className="report-instance-meta">
               <span className="report-label">Selector</span>
               <code className="report-selector">{inst.selector}</code>
-            </div>
-            <div className="report-instance-meta">
-              <span className="report-label">Issue</span>
-              <span>{inst.summary}</span>
             </div>
             <div className="report-code-block">
               <span className="report-label">Element</span>
@@ -497,6 +523,8 @@ function GenericCard({ violation }) {
 }
 
 function ContrastCard({ violation }) {
+  const wcagRef = formatWcagFromTags(violation.tags);
+
   return (
     <section className="report-violation-card" aria-labelledby={`rule-${violation.id}`}>
       <div className="report-violation-header">
@@ -504,12 +532,14 @@ function ContrastCard({ violation }) {
           <h2 id={`rule-${violation.id}`} className="report-rule-name">
             {violation.rule}
           </h2>
-          <p className="report-wcag-ref">{violation.wcag}</p>
+          {wcagRef && <p className="report-wcag-ref">{wcagRef}</p>}
         </div>
         <ImpactBadge impact={violation.impact} />
       </div>
 
-      <p className="report-violation-desc">{violation.description}</p>
+      <p className="report-violation-desc">{violation.helpText}</p>
+
+      <TagsList tags={violation.tags} />
 
       <a
         href={violation.helpUrl}
