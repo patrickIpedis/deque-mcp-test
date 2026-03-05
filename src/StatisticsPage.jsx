@@ -7,9 +7,9 @@ const allIssues = [
     title: 'Missing `lang` on `<html>`',
     wcag: '3.1.1 Language of Page',
     level: 'A',
-    axeDetected: true,
-    axeRule: 'html-has-lang',
-    fixed: true,
+    axeDetected: false,
+    axeRule: null,
+    fixed: false,
     category: 'Structure',
   },
   {

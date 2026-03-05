@@ -121,9 +121,9 @@ const AppRemediated = () => (
         <input type="email" name="email" placeholder="Email" /><br />
 
         {/* Remediated: added disabled so aria-hidden input is not focusable */}
-        <input type="text" name="country" placeholder="Country" aria-hidden="true" disabled /><br />
+        <input type="text" name="country" placeholder="Country" aria-hidden="true" disabled tabIndex="-1" /><br />
 
-        <button className="rx-image-button">
+        <button className="rx-image-button" aria-label="Submit">
           <img src="/submit-icon.png" alt="Submit" />
         </button>
       </form>

@@ -51,12 +51,12 @@
   border-radius: 6px;
   text-decoration: none;
   color: #ffffff;
-  background: #6366f1;
+  background: #4f46e5;
   transition: background 0.15s;
 }
 
 .rx-stats-link:hover {
-  background: #4f46e5;
+  background: #4338ca;
 }
 
 .rx-stats-link:focus-visible {
